@@ -14,6 +14,7 @@ function Register(){
    const [passWord, setPassWord] = useState("");
    const [userRole, setUserRole] = useState("");
    const [userResidence, setUserResidence] = useState("");
+   const [roleSelectedOption, setRoleSelectedOption] = useState(null);
 
 
    const funcRegister = () =>{
@@ -54,7 +55,7 @@ function Register(){
 
 
    const onRoleChange = (data) => {
-      
+      setRoleSelectedOption(data);
       setUserRole(data);
     };
 
@@ -64,11 +65,14 @@ function Register(){
     };
 
 
+
+
+
    return(
        <div className="register">
            <h1>Register</h1>
-           <Select placeholder='Are you a student or admin?' getOptionValue={(option) => option} onChange={onRoleChange}  isMulti name="roles"  options={roleOptions} className="userRole"  classNamePrefix="select"/>
-           <Select placeholder='What is the name of your residence?' getOptionValue={(option) => option} onChange={onResidenceChange} value={userResidence} isMulti name="residences"  options={resOptions} className="residenceName"  classNamePrefix="select"/>
+           <Select placeholder='Are you a student or admin?'  onChange={onRoleChange}  isMulti  options={roleOptions} className="userRole"  classNamePrefix="select"/>
+           <Select placeholder='What is the name of your residence?'  onChange={onResidenceChange}  isMulti  options={resOptions} className="residenceName"  classNamePrefix="select"/>
            <input type="text" onChange={(e)=>{ setUserName(e.target.value) }} placeholder='username..' />
            <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
            <button onClick={ funcRegister }>Register</button>
