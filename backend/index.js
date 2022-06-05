@@ -20,10 +20,12 @@ app.post("/register",(req, res)=>{
 
     const username = req.body.username;
     const password = req.body.password;
+    const role = req.body.role;
+    const residence = req.body.residence;
 
     db.query(
-        "INSERT INTO users (username, password) VALUES (?,?)",
-        [username, password],
+        "INSERT INTO users (username, password, role, residence) VALUES (?,?,?,?)",
+        [username, password,role, residence],
         (err, result) =>{
             console.log(err);
         }
