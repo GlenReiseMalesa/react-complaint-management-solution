@@ -15,13 +15,12 @@ function Register(){
    const [userRole, setUserRole] = useState("");
    const [userResidence, setUserResidence] = useState("");
 
-   const [actualRole, setActualUserRole] = useState("");
 
    const funcRegister = () =>{
       Axios.post("http://localhost:3001/register",{
          username: userName,
          password: passWord,
-         role: actualRole,
+         role: userRole,
          residence: userResidence,
       }).then((response)=>{
          console.log(response);
@@ -56,15 +55,11 @@ function Register(){
 
    const onRoleChange = (data) => {
       
-      console.log("on change = " + JSON.stringify(actualRole+";"+data[0].value));
-      
-      setActualUserRole(actualRole+";"+data[0].value);
-
       setUserRole(data);
     };
 
     const onResidenceChange = (data) => {
-      console.log("on change = " + JSON.stringify(data[0].value));
+
       setUserResidence(data);
     };
 

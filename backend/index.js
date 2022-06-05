@@ -23,11 +23,22 @@ app.post("/register",(req, res)=>{
     const role = req.body.role;
     const residence = req.body.residence;
 
+ 
+    let actualRole = "";
+    for (let x in role) {
+        actualRole += role[x].value+"|";
+    }
+
+    let actualRes = "";
+    for (let x in residence) {
+        actualRes += residence[x].value+"|";
+    }
+
     db.query(
         "INSERT INTO users (username, password, role, residence) VALUES (?,?,?,?)",
-        [username, password,role, residence],
+        [username, password,actualRole, actualRes],
         (err, result) =>{
-            console.log(err);
+            
         }
     );
 
