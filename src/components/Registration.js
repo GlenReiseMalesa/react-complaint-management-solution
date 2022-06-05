@@ -13,14 +13,15 @@ function Register(){
    const [userName, setUserName] = useState("");
    const [passWord, setPassWord] = useState("");
    const [userRole, setUserRole] = useState("");
-   const [userResidence, setuserResidence] = useState("");
+   const [userResidence, setUserResidence] = useState("");
 
+   const [actualRole, setActualUserRole] = useState("");
 
    const funcRegister = () =>{
       Axios.post("http://localhost:3001/register",{
          username: userName,
          password: passWord,
-         role: userRole,
+         role: actualRole,
          residence: userResidence,
       }).then((response)=>{
          console.log(response);
@@ -53,11 +54,26 @@ function Register(){
    ];
 
 
+   const onRoleChange = (data) => {
+      
+      console.log("on change = " + JSON.stringify(actualRole+";"+data[0].value));
+      
+      setActualUserRole(actualRole+";"+data[0].value);
+
+      setUserRole(data);
+    };
+
+    const onResidenceChange = (data) => {
+      console.log("on change = " + JSON.stringify(data[0].value));
+      setUserResidence(data);
+    };
+
+
    return(
        <div className="register">
            <h1>Register</h1>
-           <Select placeholder='Are you a student or admin?' isMulti name="roles"  options={roleOptions} className="userRole"  classNamePrefix="select"/>
-           <Select placeholder='What is the name of your residence?' isMulti name="residences"  options={resOptions} className="residenceName"  classNamePrefix="select"/>
+           <Select placeholder='Are you a student or admin?' getOptionValue={(option) => option} onChange={onRoleChange}  isMulti name="roles"  options={roleOptions} className="userRole"  classNamePrefix="select"/>
+           <Select placeholder='What is the name of your residence?' getOptionValue={(option) => option} onChange={onResidenceChange} value={userResidence} isMulti name="residences"  options={resOptions} className="residenceName"  classNamePrefix="select"/>
            <input type="text" onChange={(e)=>{ setUserName(e.target.value) }} placeholder='username..' />
            <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
            <button onClick={ funcRegister }>Register</button>
