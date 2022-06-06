@@ -10,21 +10,26 @@ import Select from 'react-select'
 
 function Register(){
 
-   const [userName, setUserName] = useState("");
+   const [emailAddress, setEmailAddress] = useState("");
    const [passWord, setPassWord] = useState("");
    const [userRole, setUserRole] = useState("");
    const [userResidence, setUserResidence] = useState("");
-   const [roleSelectedOption, setRoleSelectedOption] = useState(null);
+   const [firstName, setFirstName] = useState("");
+   const [lastName, setlastName] = useState("");
+   const [contact, setContact] = useState("");
 
 
    const funcRegister = () =>{
       Axios.post("http://localhost:3001/register",{
-         username: userName,
+         emailAddress: emailAddress,
          password: passWord,
          role: userRole,
          residence: userResidence,
+         firstName: firstName,
+         lastName: lastName,
+         contact: contact,
       }).then((response)=>{
-         console.log(response);
+         //console.log(response);
       })
    };
 
@@ -55,7 +60,7 @@ function Register(){
 
 
    const onRoleChange = (data) => {
-      setRoleSelectedOption(data);
+  
       setUserRole(data);
     };
 
@@ -71,10 +76,13 @@ function Register(){
    return(
        <div className="register">
            <h1>Register</h1>
+           <input type="text" onChange={(e)=>{ setFirstName(e.target.value) }} placeholder='first name..' />
+           <input type="text" onChange={(e)=>{ setlastName(e.target.value) }} placeholder='last name..' />
+           <input type="text" onChange={(e)=>{ setContact(e.target.value) }} placeholder='contact number..' />
+           <input type="email" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email address..' />
+           <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
            <Select placeholder='Are you a student or admin?'  onChange={onRoleChange}  isMulti  options={roleOptions} className="userRole"  classNamePrefix="select"/>
            <Select placeholder='What is the name of your residence?'  onChange={onResidenceChange}  isMulti  options={resOptions} className="residenceName"  classNamePrefix="select"/>
-           <input type="text" onChange={(e)=>{ setUserName(e.target.value) }} placeholder='username..' />
-           <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
            <button onClick={ funcRegister }>Register</button>
            <Link to="/">have an account?</Link>
        </div>

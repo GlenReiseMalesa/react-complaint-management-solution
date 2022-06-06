@@ -8,12 +8,12 @@ function Login(){
 
     const navigate = useNavigate();
 
-    const [userName, setUserName] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
     const [passWord, setPassWord] = useState("");
  
     const funcLogin = () =>{
        Axios.post("http://localhost:3001/login",{
-          username: userName,
+          emailAddress: emailAddress,
           password: passWord,
        }).then((response)=>{
           
@@ -33,7 +33,7 @@ function Login(){
    return(
        <div className="login">
            <h1>Login</h1>
-           <input type="text" onChange={(e)=>{ setUserName(e.target.value) }} placeholder='username..' />
+           <input type="text" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email Address..' />
            <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
            <button onClick={ funcLogin }>Login</button>
            <Link to="/registration">haven't registered yet?</Link>

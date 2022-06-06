@@ -18,10 +18,13 @@ const db = mysql.createConnection({
 //register query
 app.post("/register",(req, res)=>{
 
-    const username = req.body.username;
+    const emailAddress = req.body.emailAddress;
     const password = req.body.password;
     const role = req.body.role;
     const residence = req.body.residence;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const contact = req.body.contact;
 
  
     let actualRole = "";
@@ -35,8 +38,8 @@ app.post("/register",(req, res)=>{
     }
 
     db.query(
-        "INSERT INTO users (username, password, role, residence) VALUES (?,?,?,?)",
-        [username, password,actualRole, actualRes],
+        "INSERT INTO users (emailAddress, password, role, residence,firstName,lastName,contact) VALUES (?,?,?,?,?,?,?)",
+        [emailAddress, password,actualRole, actualRes,firstName,lastName,contact],
         (err, result) =>{
             
         }
@@ -47,12 +50,12 @@ app.post("/register",(req, res)=>{
 //login query
 app.post("/login",(req, res)=>{
 
-    const username = req.body.username;
+    const emailAddress = req.body.emailAddress;
     const password = req.body.password;
 
     db.query(
-        "SELECT * FROM users WHERE username = ? AND password = ?",
-        [username, password],
+        "SELECT * FROM users WHERE emailAddress = ? AND password = ?",
+        [emailAddress, password],
         (err, result) =>{
             
            if(err){
@@ -62,7 +65,7 @@ app.post("/login",(req, res)=>{
            if(result.length > 0){
                res.send(result);
            }else{
-               res.send({ message: "Wrong username/password!"});
+               res.send({ message: "Wrong emailAddress/password!"});
            }
 
         }
