@@ -35,11 +35,9 @@ function Login(){
 
       //if you haven't pressed the logout button you go back to the dashboard
         useEffect(() => {
-            
-            if( sessionStorage.getItem("isLoggedIn") !== "loggedOut"){
+            if(sessionStorage.getItem("isLoggedIn")){
                 navigate('/dashboard');
             }
-
         });
 
 
