@@ -1,5 +1,5 @@
 import '../App.css';
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
 import {BrowserRouter ,Link,Navigate,useNavigate , Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
 
@@ -23,6 +23,7 @@ function Login(){
               //console.log(response.data.message);
           }else{
               //login successful
+              sessionStorage.setItem("isLoggedIn",emailAddress);
               navigate('/dashboard');              
           }
 
@@ -30,7 +31,20 @@ function Login(){
   
     };
 
+
+
+      //if you haven't pressed the logout button you go back to the dashboard
+        useEffect(() => {
+            
+            if( sessionStorage.getItem("isLoggedIn") !== "loggedOut"){
+                navigate('/dashboard');
+            }
+
+        });
+
+
    return(
+       
        <div className="login">
            <h1>Login</h1>
            <input type="text" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email Address..' />
@@ -39,6 +53,9 @@ function Login(){
            <Link to="/registration">haven't registered yet?</Link>
        </div>
    );
+
+   
 }
+
 
 export default Login;

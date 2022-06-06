@@ -7,10 +7,14 @@ import Axios from 'axios';
 function Dashboard(){
 
 
+    const loggedOut = ()=>{
+        sessionStorage.setItem("isLoggedIn","loggedOut")
+    }
 
    return(
        <div className="dashboard">
-
+          {console.log(sessionStorage.getItem("isLoggedIn"))}
+          <button onClick={ loggedOut }>logout</button>
        </div>
    );
 }
