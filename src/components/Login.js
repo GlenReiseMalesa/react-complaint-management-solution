@@ -1,11 +1,12 @@
 import '../App.css';
 import React,{ useState } from 'react';
-import {BrowserRouter ,Link,Navigate , Route ,Routes} from 'react-router-dom';
+import {BrowserRouter ,Link,Navigate,useNavigate , Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
 
 
 function Login(){
 
+    const navigate = useNavigate();
 
     const [userName, setUserName] = useState("");
     const [passWord, setPassWord] = useState("");
@@ -19,14 +20,14 @@ function Login(){
 
           if(response.data.message){
               //login failed
-              console.log(response.data.message);
+              //console.log(response.data.message);
           }else{
               //login successful
-              console.log(response.data[0].username);
-              
+              navigate('/dashboard');              
           }
 
        })
+  
     };
 
    return(
