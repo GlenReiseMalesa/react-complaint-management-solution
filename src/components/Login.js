@@ -2,7 +2,7 @@ import '../App.css';
 import React,{ useState,useEffect } from 'react';
 import {BrowserRouter ,Link,Navigate,useNavigate , Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
-
+import Logo from "./newlogo.svg";
 
 function Login(){
 
@@ -43,13 +43,27 @@ function Login(){
 
    return(
        
-       <div className="login">
+       <div className="login text-center">
+           <main className="form-signin w-100 m-auto">
+             <form>
+                   <img className="mb-4" src={Logo} alt="" width="80" height="60" />
+                   <h1 className="h3 mb-3 fw-normal">Sign In</h1>
 
-           <h1>Login</h1>
-           <input type="text" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email address..' />
-           <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
-           <button onClick={ funcLogin }>Login</button>
-           <Link to="/registration">haven't registered yet?</Link>
+                   <div className="form-floating mb-2">
+                     <input type="email" className="form-control" id="floatingInput" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email address..' />
+                     <label for="floatingInput">Email address</label>
+                   </div>
+
+
+                   <div className="form-floating mb-2">
+                    <input type="password" className="form-control" id="floatingPassword" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
+                    <label for="floatingPassword">Password</label>
+                   </div>
+
+                    <button className="w-100 btn btn-lg btn-primary" onClick={ funcLogin }>sign in</button>
+                    <p className="mt-5 mb-3 text-muted"><Link to="/registration">haven't registered yet?</Link></p>
+            </form>
+           </main>
        </div>
    );
 
