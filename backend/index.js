@@ -29,12 +29,12 @@ app.post("/register",(req, res)=>{
  
     let actualRole = "";
     for (let x in role) {
-        actualRole += role[x].value+"|";
+        actualRole += role[x].value+"; ";
     }
 
     let actualRes = "";
     for (let x in residence) {
-        actualRes += residence[x].value+"|";
+        actualRes += residence[x].value+"; ";
     }
 
     db.query(
@@ -66,6 +66,26 @@ app.post("/login",(req, res)=>{
                res.send(result);
            }else{
                res.send({ message: "Wrong emailAddress/password!"});
+           }
+
+        }
+    );
+
+});
+
+app.post("/getUser",(req, res)=>{
+
+    const emailAddress = req.body.emailAddress;
+
+    db.query(
+        "SELECT * FROM users WHERE emailAddress = ? ",
+        [emailAddress],
+        (err, result) =>{
+            
+           if(result.length > 0){
+               res.send(result);
+           }else{
+               
            }
 
         }
