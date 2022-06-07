@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Register  from './components/Registration';
 import Dashboard from './components/Dashboard';
 
+import 'bootstrap';
+
 function App() {
   return (
     <div className="App">
