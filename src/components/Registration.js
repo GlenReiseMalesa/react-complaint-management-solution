@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import {BrowserRouter ,Link,Navigate, Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
 import Select from 'react-select'
-
+import Logo from "./newlogo.svg";
 
 
 
@@ -74,17 +74,45 @@ function Register(){
 
 
    return(
-       <div className="register">
-           <h1>Register</h1>
-           <input type="text" onChange={(e)=>{ setFirstName(e.target.value) }} placeholder='first name..' />
-           <input type="text" onChange={(e)=>{ setlastName(e.target.value) }} placeholder='last name..' />
-           <input type="text" onChange={(e)=>{ setContact(e.target.value) }} placeholder='contact number..' />
-           <input type="email" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email address..' />
-           <input type="password" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
-           <Select placeholder='Are you a student or admin?'  onChange={onRoleChange}  isMulti  options={roleOptions} className="userRole"  classNamePrefix="select"/>
-           <Select placeholder='What is the name of your residence?'  onChange={onResidenceChange}  isMulti  options={resOptions} className="residenceName"  classNamePrefix="select"/>
-           <button onClick={ funcRegister }>Register</button>
-           <Link to="/">have an account?</Link>
+       <div className="register text-center">
+           <main className="form-signin w-100 m-auto">
+             <form>
+                   <img className="mb-4" src={Logo} alt="" width="80" height="60" />
+                   <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
+
+                   <div className="form-floating mb-2">
+                     <input type="text" className="form-control" id="floatingInput" onChange={(e)=>{ setFirstName(e.target.value) }} placeholder='first name..' />
+                     <label for="floatingInput">First name</label>
+                   </div>
+
+                   <div className="form-floating mb-2">
+                   <input type="text" className="form-control" id="floatingInput" onChange={(e)=>{ setlastName(e.target.value) }} placeholder='last name..' />
+                     <label for="floatingInput">Last name</label>
+                   </div>
+
+                   <div className="form-floating mb-2">
+                   <input type="text" className="form-control" id="floatingInput" onChange={(e)=>{ setContact(e.target.value) }} placeholder='contact number..' />
+                     <label for="floatingInput">Contact number</label>
+                   </div>
+
+                   <div className="form-floating mb-2">
+                   <input type="email" className="form-control" id="floatingInput" onChange={(e)=>{ setEmailAddress(e.target.value) }} placeholder='email address..' />
+                     <label for="floatingInput">Email address</label>
+                   </div>
+
+                   <div className="form-floating mb-2">
+                   <input type="password" className="form-control" id="floatingInput" onChange={(e)=>{ setPassWord(e.target.value) }} placeholder='password..' />
+                     <label for="floatingInput">Password</label>
+                   </div>
+
+           
+                  <Select placeholder='Are you a student or admin?'  onChange={onRoleChange}  isMulti  options={roleOptions} className="form-floating mb-2"  classNamePrefix="select"/>
+                  <Select placeholder='What is the name of your residence?'  onChange={onResidenceChange}  isMulti  options={resOptions} className="form-floating mb-2"  classNamePrefix="select"/>
+                  <button className="w-100 btn btn-lg btn-primary"  onClick={ funcRegister }>sign up</button>
+                  <p className="mt-5 mb-3 text-muted"><Link to="/">have an account?</Link></p>
+
+              </form>
+           </main>
        </div>
    );
 }
