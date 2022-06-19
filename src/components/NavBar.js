@@ -11,13 +11,7 @@ function NavBar(props){
         sessionStorage.removeItem("isLoggedIn");
         navigate('/');
      }
-
-                 // let role = response.data[0].role;  
-                // console.log(role); 
-                // if(role.includes("Student")){
-                //     console.log(response.data[0]); 
-                // }     
-
+  
 let role = props.role;
 
 if(role.includes("Student") && !role.includes("Admin")){

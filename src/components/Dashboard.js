@@ -3,6 +3,7 @@ import React,{ useState,useEffect } from 'react';
 import {BrowserRouter ,Link,Navigate,useNavigate, Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
 import NavBar from './NavBar';
+import Profile from './Profile';
 
 function Dashboard(){
 
@@ -53,6 +54,7 @@ function Dashboard(){
        <div className="dashboard">
             <NavBar role={userRole} />
             <div className="b-example-divider"></div>
+            <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
        </div>
    );
 
