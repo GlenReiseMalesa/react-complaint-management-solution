@@ -4,6 +4,7 @@ import {BrowserRouter ,Link,Navigate,useNavigate, Route ,Routes} from 'react-rou
 import Axios from 'axios';
 import NavBar from './NavBar';
 import Profile from './Profile';
+import CreateMyComplaint from './createMyComplaint';
 
 function Dashboard(){
 
@@ -55,6 +56,8 @@ if(userRole.includes("Student") && !userRole.includes("Admin")){
              <NavBar role={userRole} />
              <div className="b-example-divider"></div>
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+             <div className="b-example-divider"></div>
+             <CreateMyComplaint role={userRole}/>
         </div>
     );
 }
@@ -77,6 +80,8 @@ if(userRole.includes("Student")&&userRole.includes("Admin")){
              <NavBar role={userRole} />
              <div className="b-example-divider"></div>
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+             <div className="b-example-divider"></div>
+             <CreateMyComplaint role={userRole}/>
         </div>
     );
 }
