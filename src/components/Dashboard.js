@@ -48,15 +48,38 @@ function Dashboard(){
     });
 
 
+//a person is only a student
+if(userRole.includes("Student") && !userRole.includes("Admin")){
+    return(
+        <div className="dashboard">
+             <NavBar role={userRole} />
+             <div className="b-example-divider"></div>
+             <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+        </div>
+    );
+}
 
+//a person is only an admin
+if(userRole.includes("Admin") && !userRole.includes("Student")){
+    return(
+        <div className="dashboard">
+             <NavBar role={userRole} />
+             <div className="b-example-divider"></div>
+             <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+        </div>
+    );
+}
 
-   return(
-       <div className="dashboard">
-            <NavBar role={userRole} />
-            <div className="b-example-divider"></div>
-            <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
-       </div>
-   );
+//a person is both a student and admin
+if(userRole.includes("Student")&&userRole.includes("Admin")){
+    return(
+        <div className="dashboard">
+             <NavBar role={userRole} />
+             <div className="b-example-divider"></div>
+             <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+        </div>
+    );
+}
 
 }
 
