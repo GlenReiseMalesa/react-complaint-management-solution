@@ -95,6 +95,29 @@ app.post("/getUser",(req, res)=>{
 
 
 
+//create complaint query
+app.post("/createComplaint",(req, res)=>{
+
+    const description = req.body.description;
+    const emailCreatedBy = req.body.emailCreatedBy;
+    const emailHandledBy = req.body.emailHandledBy;
+    const status = req.body.status;
+    const dateCreated = req.body.dateCreated;
+
+
+    db.query(
+        "INSERT INTO maintanance_issue (description, emailCreatedBy, emailHandledBy, status,dateCreated) VALUES (?,?,?,?,?)",
+        [description, emailCreatedBy,emailHandledBy, status,dateCreated],
+        (err, result) =>{
+            
+        }
+    );
+
+});
+
+
+
+
 app.listen(3001,()=>{
     console.log("server running.....");
 });

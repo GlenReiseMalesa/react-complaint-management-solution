@@ -57,7 +57,7 @@ if(userRole.includes("Student") && !userRole.includes("Admin")){
              <div className="b-example-divider"></div>
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
              <div className="b-example-divider"></div>
-             <CreateMyComplaint role={userRole}/>
+             <CreateMyComplaint email={emailAddress}/>
         </div>
     );
 }
@@ -81,7 +81,7 @@ if(userRole.includes("Student")&&userRole.includes("Admin")){
              <div className="b-example-divider"></div>
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
              <div className="b-example-divider"></div>
-             <CreateMyComplaint role={userRole}/>
+             <CreateMyComplaint email={emailAddress}/>
         </div>
     );
 }

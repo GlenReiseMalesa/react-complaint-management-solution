@@ -5,7 +5,23 @@ import Axios from 'axios';
 import NavBar from './NavBar';
 import Logo from "./newlogo.svg";
 
-function createMyComplaint(props){
+function CreateMyComplaint(props){
+
+    const [description, setDescription] = useState("");
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+    const funcCreateComplaint = () =>{
+        Axios.post("http://localhost:3001/createComplaint",{
+            description: description,
+            emailCreatedBy: props.email,
+            emailHandledBy: "",
+            status: "pending",
+            dateCreated: date,
+        }).then((response)=>{
+           //console.log(response);
+        })
+     };
 
    return(
        <div className="createMyComplaint text-center">
@@ -19,10 +35,10 @@ function createMyComplaint(props){
           <main className="form-signin w-100 m-auto">
              <form>
                    <div className="form-floating mb-2">
-                     <textarea className="form-control" style={{height: "150px"}} placeholder="describe your maintanance issue.." id="floatingTextarea2"></textarea>
+                     <textarea className="form-control" onChange={(e)=>{ setDescription(e.target.value) }} style={{height: "150px"}} placeholder="describe your maintanance issue.." id="floatingTextarea2"></textarea>
                      <label for="floatingInput">Complaint</label>
                    </div>
-                   <button className="w-100 btn btn-lg btn-primary" >submit</button>
+                   <button className="w-100 btn btn-lg btn-success" onClick={funcCreateComplaint} >submit</button>
             </form>
            </main>
 
@@ -31,4 +47,4 @@ function createMyComplaint(props){
 
 }
 
-export default createMyComplaint;
+export default CreateMyComplaint;
