@@ -4,15 +4,37 @@ import {BrowserRouter ,Link,Navigate,useNavigate, Route ,Routes} from 'react-rou
 import Axios from 'axios';
 import NavBar from './NavBar';
 import Logo from "./newlogo.svg";
+import { data } from 'jquery';
 
-function myComplaints(props){
+function MyComplaints(props){
+
+
+    useEffect(() => {   
+        //get a user's complaints
+            Axios.post("http://localhost:3001/getMyComplaints",{
+                emailAddress: props.email,
+            }).then((response)=>{
+
+                if(response.data.message){
+                }else{
+                 //get the data                    
+         
+
+
+                }
+
+            });
+
+
+    });
 
    return(
        <div className="myComplaints">
-
+       
+          <h1>Heii</h1>
        </div>
    );
 
 }
 
-export default myComplaints;
+export default MyComplaints;

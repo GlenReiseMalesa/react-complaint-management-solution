@@ -41,7 +41,6 @@ function CreateMyComplaint(props){
                    <button className="w-100 btn btn-lg btn-success" onClick={funcCreateComplaint} >submit</button>
             </form>
            </main>
-
        </div>
    );
 

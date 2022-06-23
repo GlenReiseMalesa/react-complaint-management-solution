@@ -73,6 +73,7 @@ app.post("/login",(req, res)=>{
 
 });
 
+//get user query
 app.post("/getUser",(req, res)=>{
 
     const emailAddress = req.body.emailAddress;
@@ -93,6 +94,27 @@ app.post("/getUser",(req, res)=>{
 
 });
 
+
+//get my complaints
+app.post("/getMyComplaints",(req, res)=>{
+
+    const emailAddress = req.body.emailAddress;
+
+    db.query(
+        "SELECT * FROM maintanance_issue WHERE emailCreatedBy = ? ",
+        [emailAddress],
+        (err, result) =>{
+            
+           if(result.length > 0){
+               res.send(result);
+           }else{
+               
+           }
+
+        }
+    );
+
+});
 
 
 //create complaint query

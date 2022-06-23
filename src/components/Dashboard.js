@@ -5,6 +5,7 @@ import Axios from 'axios';
 import NavBar from './NavBar';
 import Profile from './Profile';
 import CreateMyComplaint from './createMyComplaint';
+import MyComplaints from './myComplaints';
 
 function Dashboard(){
 
@@ -58,6 +59,8 @@ if(userRole.includes("Student") && !userRole.includes("Admin")){
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
              <div className="b-example-divider"></div>
              <CreateMyComplaint email={emailAddress}/>
+             <div className="b-example-divider"></div>
+             <MyComplaints email={emailAddress}/>
         </div>
     );
 }
@@ -82,6 +85,9 @@ if(userRole.includes("Student")&&userRole.includes("Admin")){
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
              <div className="b-example-divider"></div>
              <CreateMyComplaint email={emailAddress}/>
+             <div className="b-example-divider"></div>
+             <MyComplaints email={emailAddress}/>
+
         </div>
     );
 }
