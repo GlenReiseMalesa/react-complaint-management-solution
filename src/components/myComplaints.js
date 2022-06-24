@@ -8,30 +8,33 @@ import { data } from 'jquery';
 
 function MyComplaints(props){
 
-
+   const [complaints,setComplaints] = useState([]);
+ 
     useEffect(() => {   
         //get a user's complaints
             Axios.post("http://localhost:3001/getMyComplaints",{
                 emailAddress: props.email,
             }).then((response)=>{
+             
+                    if(response.data.message){
+                    }else{
+                    //get the data                         
+                      setComplaints(response.data);             
+                    }
+                
 
-                if(response.data.message){
-                }else{
-                 //get the data                    
-         
-
-
-                }
-
-            });
+            },[2]);
 
 
     });
 
    return(
        <div className="myComplaints">
-       
-          <h1>Heii</h1>
+         {
+           complaints.map((c) => {
+            return <h1>{c.description}</h1>
+           })
+         }
        </div>
    );
 
