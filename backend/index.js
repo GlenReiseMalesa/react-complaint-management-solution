@@ -117,6 +117,24 @@ app.post("/getMyComplaints",(req, res)=>{
 });
 
 
+//get all complaints
+app.post("/allNewStudentComplaints",(req, res)=>{
+
+    db.query(
+        "SELECT * FROM maintanance_issue ",
+        (err, result) =>{
+            
+           if(result.length > 0){
+               res.send(result);
+           }else{
+               
+           }
+
+        }
+    );
+
+});
+
 //create complaint query
 app.post("/createComplaint",(req, res)=>{
 

@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import Profile from './Profile';
 import CreateMyComplaint from './createMyComplaint';
 import MyComplaints from './myComplaints';
+import NewStudentComplaints from './newStudentComplaints';
 
 function Dashboard(){
 
@@ -72,6 +73,8 @@ if(userRole.includes("Admin") && !userRole.includes("Student")){
              <NavBar role={userRole} />
              <div className="b-example-divider"></div>
              <Profile email={emailAddress} password={passWord} role={userRole} res={userResidence} fName={firstName} lName={lastName} contact={contact}/>
+             <div className="b-example-divider"></div>
+             <NewStudentComplaints />
         </div>
     );
 }
@@ -87,6 +90,8 @@ if(userRole.includes("Student")&&userRole.includes("Admin")){
              <CreateMyComplaint email={emailAddress}/>
              <div className="b-example-divider"></div>
              <MyComplaints email={emailAddress}/>
+             <div className="b-example-divider"></div>
+             <NewStudentComplaints />
 
         </div>
     );
