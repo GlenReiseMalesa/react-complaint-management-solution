@@ -8,6 +8,7 @@ import CreateMyComplaint from './createMyComplaint';
 import MyComplaints from './myComplaints';
 import NewStudentComplaints from './newStudentComplaints';
 import StartedStudentComplaints from './startedStudentComplaints';
+import CompletedStudentComplaints from './completedStudentComplaints';
 
 function Dashboard(){
 
@@ -78,6 +79,8 @@ if(userRole.includes("Admin") && !userRole.includes("Student")){
              <NewStudentComplaints />
              <div className="b-example-divider"></div>
              <StartedStudentComplaints email={emailAddress}/>
+             <div className="b-example-divider"></div>
+             <CompletedStudentComplaints email={emailAddress}/>
         </div>
     );
 }
@@ -97,7 +100,8 @@ if(userRole.includes("Student")&&userRole.includes("Admin")){
              <NewStudentComplaints />
              <div className="b-example-divider"></div>
              <StartedStudentComplaints email={emailAddress}/>
-
+             <div className="b-example-divider"></div>
+             <CompletedStudentComplaints email={emailAddress}/>
         </div>
     );
 }

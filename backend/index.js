@@ -123,8 +123,8 @@ app.post("/getComplaintsHandledByMe",(req, res)=>{
     const emailAddress = req.body.emailAddress;
 
     db.query(
-        "SELECT * FROM maintanance_issue WHERE emailHandledBy = ? ",
-        [emailAddress],
+        "SELECT * FROM maintanance_issue WHERE emailHandledBy = ? AND status = ? ",
+        [emailAddress,"started"],
         (err, result) =>{
             
            if(result.length > 0){
@@ -137,6 +137,32 @@ app.post("/getComplaintsHandledByMe",(req, res)=>{
     );
 
 });
+
+
+
+
+
+//get complaints completed by me
+app.post("/getComplaintsCompletedByMe",(req, res)=>{
+
+    const emailAddress = req.body.emailAddress;
+
+    db.query(
+        "SELECT * FROM maintanance_issue WHERE emailHandledBy = ? AND status = ? ",
+        [emailAddress,"completed"],
+        (err, result) =>{
+            
+           if(result.length > 0){
+               res.send(result);
+           }else{
+               
+           }
+
+        }
+    );
+
+});
+
 
 
 //get all complaints
