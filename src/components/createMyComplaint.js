@@ -9,7 +9,7 @@ function CreateMyComplaint(props){
 
     const [description, setDescription] = useState("");
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const date = `${current.getMonth()}/${current.getDate()+1}/${current.getFullYear()}`;
 
     const funcCreateComplaint = () =>{
         Axios.post("http://localhost:3001/createComplaint",{
