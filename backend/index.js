@@ -117,6 +117,28 @@ app.post("/getMyComplaints",(req, res)=>{
 });
 
 
+//get complaints handle by me
+app.post("/getComplaintsHandledByMe",(req, res)=>{
+
+    const emailAddress = req.body.emailAddress;
+
+    db.query(
+        "SELECT * FROM maintanance_issue WHERE emailHandledBy = ? ",
+        [emailAddress],
+        (err, result) =>{
+            
+           if(result.length > 0){
+               res.send(result);
+           }else{
+               
+           }
+
+        }
+    );
+
+});
+
+
 //get all complaints
 app.post("/allNewStudentComplaints",(req, res)=>{
 
