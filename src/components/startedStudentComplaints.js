@@ -5,6 +5,10 @@ import Axios from 'axios';
 import NavBar from './NavBar';
 import Logo from "./newlogo.svg";
 
+
+
+
+
 function StartedStudentComplaints(props){
 
 
@@ -56,19 +60,20 @@ function StartedStudentComplaints(props){
                             return TotalDays;
                         }
 
+                        if(complaint.status == "started"){
                             return (
                                 <div className="w-75 m-auto card text-end mb-5">
                                     <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>
-                                        <a href="" className="btn btn-success">mark as complete</a>
+                                        <button type="button" className="btn btn-success">mark as complete</button>
                                     </div>
                                     <div className="card-footer text-muted">
                                      posted {days(date_1, date_2)}  days ago.
                                     </div>
                                 </div>
                             );
-
+                        }
                     })
                 }
            </main>

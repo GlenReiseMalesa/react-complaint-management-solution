@@ -165,6 +165,34 @@ app.post("/getComplaintsCompletedByMe",(req, res)=>{
 
 
 
+
+//update complaint when the admin starts handling it
+app.post("/updateComplaint",(req, res)=>{
+
+    const email = req.body.email;
+    const status = req.body.status;
+    const id = req.body.id;
+
+
+    db.query(
+        "UPDATE maintanance_issue SET emailHandledBy = ? , status = ? WHERE id = ?",
+        [email,status,id],
+        (err, result) =>{
+            
+           if(result.length > 0){
+               //res.send(result);
+           }else{
+               
+           }
+
+        }
+    );
+
+});
+
+
+
+
 //get all complaints
 app.post("/allNewStudentComplaints",(req, res)=>{
 

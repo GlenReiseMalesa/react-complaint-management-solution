@@ -57,6 +57,7 @@ function CompletedStudentComplaints(props){
                             return TotalDays;
                         }
 
+                        if(complaint.status == "completed"){
                             return (
                                 <div className="w-75 m-auto card text-end mb-5">
                                     <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
@@ -68,7 +69,7 @@ function CompletedStudentComplaints(props){
                                     </div>
                                 </div>
                             );
-
+                        }
                     })
                 }
            </main>

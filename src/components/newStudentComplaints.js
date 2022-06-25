@@ -5,7 +5,28 @@ import Axios from 'axios';
 import NavBar from './NavBar';
 import Logo from "./newlogo.svg";
 
-function NewStudentComplaints(){
+
+
+function start(id,email){
+       
+    
+        // //updated a user's complaints
+        // Axios.post("http://localhost:3001/updateComplaint",{
+        //     email: email,
+        //     status: "started",
+        //     id: id,
+        // }).then((response)=>{
+         
+          
+        // });
+
+        // console.log("Heelo");
+
+
+}
+
+
+function NewStudentComplaints(props){
 
     const [complaints,setComplaints] = useState([]);
  
@@ -55,18 +76,21 @@ function NewStudentComplaints(){
                             return TotalDays;
                         }
 
+                        if(complaint.status == "pending"){
                             return (
                                 <div className="w-75 m-auto card text-start mb-5">
                                     <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>
-                                        <a href="" className="btn btn-warning">get started</a>
+                                        <button type="button" onClick={start(complaint.id,props.email)} className="btn btn-warning">get started</button>
                                     </div>
                                     <div className="card-footer text-muted">
                                      posted {days(date_1, date_2)}  days ago.
                                     </div>
                                 </div>
                             );
+                        }
+
 
                     })
                 }

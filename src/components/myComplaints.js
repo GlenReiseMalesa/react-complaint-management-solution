@@ -24,8 +24,6 @@ function MyComplaints(props){
                 
 
             });
-
-
     });
 
    return(
