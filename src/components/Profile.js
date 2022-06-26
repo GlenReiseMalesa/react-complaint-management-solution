@@ -7,6 +7,15 @@ import Logo from "./newlogo.svg";
 
 function Profile(props){
 
+
+    const [emailAddress, setEmailAddress] = useState("");
+    const [passWord, setPassWord] = useState("");
+    const [userRole, setUserRole] = useState("");
+    const [userResidence, setUserResidence] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setlastName] = useState("");
+    const [mycontact, setContact] = useState("");
+
     let role = props.role;
     let email = props.email;
     let password = props.password;
@@ -26,38 +35,42 @@ function Profile(props){
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form>
-            <div className="modal-body">
+                <div className="modal-body">
 
-               <div className="mb-3">
-                    <label className="form-label">First Name</label>
-                    <input type="text" className="form-control"  />
-                </div>
                 <div className="mb-3">
-                    <label className="form-label">Last Name</label>
-                    <input type="text" className="form-control"  />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Privilege(s)</label>
-                    <input type="text" className="form-control"  />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Contact</label>
-                    <input type="text" className="form-control"  />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Password</label>
-                    <input type="text" className="form-control"  />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    <input type="text" className="form-control"  />
-                </div>
+                        <label className="form-label">First Name</label>
+                        <input type="text" onChange={(e)=>{ setFirstName(e.target.value) }} defaultValue={props.fName} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Last Name</label>
+                        <input type="text" onChange={(e)=>{ setlastName(e.target.value) }} defaultValue={props.lName} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Privilege(s)</label>
+                        <input type="text" onChange={(e)=>{ setUserRole(e.target.value) }} defaultValue={props.role} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Residence(s)</label>
+                        <input type="text" onChange={(e)=>{ setUserResidence(e.target.value) }} defaultValue={res} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Contact</label>
+                        <input type="text" onChange={(e)=>{ setContact(e.target.value) }} defaultValue={props.contact} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input type="text" onChange={(e)=>{ setPassWord(e.target.value) }} defaultValue={password} className="form-control"  />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Email address</label>
+                        <input type="text" onChange={(e)=>{ setEmailAddress(e.target.value) }} defaultValue={props.email} className="form-control"  />
+                    </div>
 
-            </div>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-            </div>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary">Save changes</button>
+                </div>
             </form>
             </div>
         </div>
