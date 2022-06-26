@@ -1,5 +1,5 @@
 import '../App.css';
-import React,{ useState,useEffect } from 'react';
+import React,{ useState,useEffect,useRef } from 'react';
 import {BrowserRouter ,Link,Navigate,useNavigate, Route ,Routes} from 'react-router-dom';
 import Axios from 'axios';
 import NavBar from './NavBar';
@@ -7,29 +7,14 @@ import Logo from "./newlogo.svg";
 
 
 
-function start(id,email){
-       
-    
-        // //updated a user's complaints
-        // Axios.post("http://localhost:3001/updateComplaint",{
-        //     email: email,
-        //     status: "started",
-        //     id: id,
-        // }).then((response)=>{
-         
-          
-        // });
 
-        // console.log("Heelo");
-
-
-}
 
 
 function NewStudentComplaints(props){
 
-    const [complaints,setComplaints] = useState([]);
- 
+    const [complaints,setComplaints] = useState([]);   
+    
+
     useEffect(() => {   
         //get a user's complaints
             Axios.post("http://localhost:3001/allNewStudentComplaints",{
@@ -45,7 +30,6 @@ function NewStudentComplaints(props){
 
             });
 
-
     });
 
    return(
@@ -60,6 +44,7 @@ function NewStudentComplaints(props){
 
           <main className="m-auto">
                 {
+                
                     complaints.map((complaint) => {
 
                         //calc numb days
@@ -76,13 +61,20 @@ function NewStudentComplaints(props){
                             return TotalDays;
                         }
 
+ 
+                        //get update data
+                        const myData = {
+                            status: 'started',
+                            id: complaint.id
+                          }
+
                         if(complaint.status == "pending"){
                             return (
                                 <div className="w-75 m-auto card text-start mb-5">
                                     <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>
-                                        <button type="button" onClick={start(complaint.id,props.email)} className="btn btn-warning">get started</button>
+                                        <Link to="/update" state={myData} className="btn btn-warning">get started</Link>
                                     </div>
                                     <div className="card-footer text-muted">
                                      posted {days(date_1, date_2)}  days ago.
