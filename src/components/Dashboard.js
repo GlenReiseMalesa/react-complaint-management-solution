@@ -40,7 +40,7 @@ function Dashboard(){
                 setEmailAddress(response.data[0].emailAddress);
                 setFirstName(response.data[0].firstName);
                 setPassWord(response.data[0].password);
-                setUserResidence(response.data[0].reidence);
+                setUserResidence(response.data[0].residence);
                 setUserRole(response.data[0].role);
                 setlastName(response.data[0].lastName);
 

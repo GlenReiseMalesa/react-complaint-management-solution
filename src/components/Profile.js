@@ -23,6 +23,23 @@ function Profile(props){
     let name = props.fName+" "+props.lName;
     let contact = props.contact;
 
+
+    const funcUpdate = () =>{
+        Axios.post("http://localhost:3001/updateUser",{
+           emailAddress: emailAddress,
+           password: passWord,
+           role: userRole,
+           residence: userResidence,
+           firstName: firstName,
+           lastName: lastName,
+           contact: mycontact,
+        }).then((response)=>{
+           //console.log(response);
+        });
+
+       console.log("hello");
+     }
+
    return(
        <div className="profile">
 
@@ -69,7 +86,7 @@ function Profile(props){
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
+                    <button type="button" className="btn btn-primary" onClick={ funcUpdate } data-bs-dismiss="modal">Save changes</button>
                 </div>
             </form>
             </div>

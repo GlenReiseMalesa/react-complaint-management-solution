@@ -47,6 +47,33 @@ app.post("/register",(req, res)=>{
 
 });
 
+
+
+
+//update user query
+app.post("/updateUser",(req, res)=>{
+
+    const emailAddress = req.body.emailAddress;
+    const password = req.body.password;
+    const role = req.body.role;
+    const residence = req.body.residence;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const contact = req.body.contact;
+
+
+    db.query(
+        "UPDATE users SET emailAddress = ? , password = ? , role = ? , residence = ? , firstName = ? , lastName = ? , contact = ? WHERE emailAddress = ? ",
+        [emailAddress, password,role, residence,firstName,lastName,contact,emailAddress],
+        (err, result) =>{
+            
+        }
+    );
+
+});
+
+
+
 //login query
 app.post("/login",(req, res)=>{
 
