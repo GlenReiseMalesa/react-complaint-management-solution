@@ -77,7 +77,7 @@ function NewStudentComplaints(props){
 
 
 
-                                    <h5 class="card-header">Created By <a href="#" >{complaint.emailCreatedBy}</a></h5>
+                                    <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>
                                         <Link to="/update" state={myData} className="btn btn-warning">get started</Link>
