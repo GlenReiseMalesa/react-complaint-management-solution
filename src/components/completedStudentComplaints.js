@@ -59,7 +59,7 @@ function CompletedStudentComplaints(props){
 
                         if(complaint.status == "completed"){
                             return (
-                                <div className="w-75 m-auto card text-end mb-5">
+                                <div className="w-75 m-auto card text-center mb-5">
                                     <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>

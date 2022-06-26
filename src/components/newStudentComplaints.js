@@ -73,7 +73,33 @@ function NewStudentComplaints(props){
                         if(complaint.status == "pending"){
                             return (
                                 <div className="w-75 m-auto card text-start mb-5">
-                                    <h5 class="card-header">Created By <a href="#">{complaint.emailCreatedBy}</a></h5>
+
+
+
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">John Kuni</li>
+                                                <li class="list-group-item">0728384875</li>
+                                                <li class="list-group-item">Oppierief</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+
+
+
+                                    <h5 class="card-header">Created By <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{complaint.emailCreatedBy}</a></h5>
                                     <div className="card-body">
                                         <p className="card-text">{complaint.description}</p>
                                         <Link to="/update" state={myData} className="btn btn-warning">get started</Link>
