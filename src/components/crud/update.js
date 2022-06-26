@@ -12,18 +12,21 @@ function Update(props){
     const navigate = useNavigate();
 
     const data = location.state;
-
-
+   
     useEffect(() => {   
+       
         //updated a user's complaints
         Axios.post("http://localhost:3001/updateComplaint",{
-            email: "email",
+            email: data.email,
             status: data.status,
             id: data.id,
         }).then((response)=>{
          
-            navigate('/dashboard');
+            
         });
+
+        navigate('/dashboard');
+      
     });
 
   

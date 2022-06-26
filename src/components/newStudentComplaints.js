@@ -12,6 +12,7 @@ import Logo from "./newlogo.svg";
 
 function NewStudentComplaints(props){
 
+
     const [complaints,setComplaints] = useState([]);   
     
 
@@ -64,9 +65,10 @@ function NewStudentComplaints(props){
  
                         //get update data
                         const myData = {
-                            status: 'started',
+                            email:props.email,
+                            status: "started",
                             id: complaint.id
-                          }
+                        }
 
                         if(complaint.status == "pending"){
                             return (
